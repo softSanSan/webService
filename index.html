@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b101b"><meta name="description" content="RCAEval backend monitoring and multimodal advice task prototype">
+<title>Service Health Console · Advice Lab</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="refinements.css">
+</head>
+<body>
+<div class="app-shell">
+ <aside class="rail"><a class="brand" href="#" aria-label="Service Health Console">S<span>H</span></a><div class="rail-line"></div><button class="nav-icon active" title="Dashboard" aria-label="Dashboard">▦</button><button class="nav-icon" id="rules-nav" title="Task rules" aria-label="Task rules">≡</button><button class="nav-icon" id="source-nav" title="Data source" aria-label="Data source">◈</button><div class="rail-bottom">LAB<br><span>01</span></div></aside>
+ <main>
+  <header><div><div class="eyebrow">OBSERVABILITY / HUMAN–AI STUDY</div><h1>Service Health Console <span class="pill">REPLAY</span></h1><p class="subtitle">Online Boutique <span>›</span> Service monitoring</p></div><div class="header-actions"><span class="connection"><i></i> Recorded telemetry</span><button id="source" class="button ghost">Data source ↗</button><button id="restart" class="button ghost">Restart</button></div></header>
+  <div id="load-error" class="notice hidden" role="alert"></div>
+  <section class="session-bar"><div><span class="mini-label">SESSION</span><strong id="session-label">Ready to begin</strong></div><div class="progress-track" id="progress"></div><span id="trial-count" class="mono">00 / 08</span><button class="text-button" id="rules-button">Task rules</button></section>
+  <div class="workspace">
+   <div class="monitoring">
+    <section class="panel context-bar"><div><span class="mini-label">SCENARIO</span><strong id="scenario-label">—</strong><span class="tag">Fixed telemetry replay</span></div><div class="window-key"><span><i class="before-dot"></i> Before: −5:00 to 0:00</span><span><i class="after-dot"></i> After: 0:00 to +5:00</span></div></section>
+    <section class="panel chart-panel"><div class="panel-heading"><div><h2 id="main-chart-title">Load + latency</h2><p>Source scale · five-second means for display</p></div><div class="segmented" id="metric-tabs"><button data-metric="cpu" class="selected">CPU</button><button data-metric="latency">latency</button><button data-metric="load">load</button><button data-metric="mem">memory</button></div></div><div class="dual-heading">01 · Load <span>Compare before and after</span></div><div id="dual-load-chart" class="chart-host"></div><div class="dual-heading">02 · Latency <span>Compare increases among eligible services</span></div><div id="main-chart" class="chart-host"></div><div class="legend" id="legend"></div></section>
+    <section class="panel service-panel"><div class="panel-heading"><div><h2>Window averages <span class="count-badge">8</span></h2><p>Compare window means calculated from original observations.</p></div><label class="metric-select">Metric <select id="table-metric"><option value="cpu">CPU</option><option value="latency">latency</option><option value="load">load</option><option value="mem">memory</option></select></label></div><div class="table-scroll"><table><thead><tr><th>Service</th><th>Load<br>Before</th><th>Load<br>After</th><th>Latency<br>Before</th><th>Latency<br>After</th></tr></thead><tbody id="service-rows"></tbody></table></div></section>
+    <details class="background-details"><summary>System context <span>Overview, background metrics and event record</span></summary><div class="background-content">
+    <section class="kpis" id="kpis"></section>
+    <div class="chart-grid"><section class="panel small-chart"><div class="panel-heading"><div><h2>Frontend errors</h2><p>frontend_error · Source scale</p></div><span class="subtle-tag">Context</span></div><div id="error-chart" class="chart-host"></div></section><section class="panel small-chart"><div class="panel-heading"><div><h2>Frontend load</h2><p>frontend_load · Source scale</p></div><span class="subtle-tag">Context</span></div><div id="load-chart" class="chart-host"></div></section></div>
+    <section class="panel event-panel"><div class="panel-heading"><div><h2>Event timeline</h2><p>Time reference only; no causal or operational conclusion is implied.</p></div><span class="subtle-tag">Source event</span></div><div class="event"><span class="event-time mono">T + 00:00</span><i></i><div><strong>Controlled fault injection</strong><p>Source: inject_time.txt. Charts align to the comparison boundary. The fault injection time is reported separately.</p></div></div></section>
+    </div></details>
+   </div>
+   <aside class="task-column"><section class="panel task-panel" id="task-panel"></section><section class="panel session-note"><span class="mini-label">PROTOTYPE NOTE</span><h3>Inspect → decide → check advice.</h3><p>Use the chart and window averages. You do not need to diagnose faults or shut down a service.</p><button class="text-button" id="export-partial">Export session ↓</button></section></aside>
+  </div>
+  <footer><span>RCAEval / RE1 · Online Boutique</span><span>Recorded data · local response storage</span><span id="footer-status">Loading data…</span></footer>
+ </main>
+</div>
+<dialog id="setup-dialog"><form id="setup-form"><div class="eyebrow">ADVICE PRESENTATION LAB</div><h2>Start a task simulation</h2><p class="dialog-intro">Inspect service telemetry and check advice presented as text or text with speech.</p><div class="setup-facts"><div><strong>8</strong><span>Scenarios</span></div><div><strong>2</strong><span>Advice formats</span></div><div><strong>5 + 5 min</strong><span>Before + after</span></div></div><label>Participant ID<input id="participant" maxlength="40" value="P01" required autocomplete="off"></label><div class="form-grid"><label>Feedback<select id="run-mode"><option value="demo">Demo: feedback after each trial</option><option value="study">No feedback until the end</option></select></label><label>Condition order<select id="schedule"><option value="AB">Text → Text + speech</option><option value="BA">Text + speech → Text</option></select></label></div><label>Scenario assignment<select id="assignment"><option value="A">List A: text · List B: text + speech</option><option value="B">List B: text · List A: text + speech</option></select></label><label>English voice<select id="voice-choice"><option value="">Loading available voices…</option></select></label><div class="audio-check"><button class="button ghost" id="test-audio" type="button">▷ Test voice</button><span id="voice-status" role="status">Browser speech synthesis</span></div><div class="rule-preview"><strong>Task rules</strong><ol><li>First, keep services whose mean load did not increase.</li><li>Then compare latency: after mean − before mean.</li><li>Select the largest positive latency increase among eligible services.</li><li>Decide independently, check advice, then submit your final answer.</li></ol><p>Advice may be wrong. Task difficulty has not been calibrated.</p></div><button class="button primary full" id="start" type="submit" disabled>Loading data…</button></form></dialog>
+<dialog id="info-dialog"><div id="info-content"></div><button class="button primary full" id="close-info">Close</button></dialog>
+<div id="toast" role="status" aria-live="polite"></div>
+<script type="module" src="app.js"></script>
+</body></html>

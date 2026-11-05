@@ -1,0 +1,56 @@
+.background-details{border:1px solid var(--line);border-radius:9px;background:#0f1824}
+.background-details>summary{padding:14px 18px;cursor:pointer;color:#bdcddd;font-size:12px;list-style-position:inside}
+.background-details>summary span{color:#7187a3;font-size:10px;margin-left:12px}
+.background-content{display:flex;flex-direction:column;gap:16px;padding:0 14px 14px}
+.background-details[open]>summary{border-bottom:1px solid var(--line);margin-bottom:14px}
+.service-panel table{font-size:12px}
+.service-panel td{padding:12px 18px}
+.service-panel th{font-size:11px}
+.task-rule{margin-bottom:13px}
+.task-column{max-width:100%}
+.task-panel h2{font-size:18px;line-height:1.45}
+.panel-heading p{font-size:11px}
+.dialog-intro{max-width:440px}
+.session-note .mini-label,.session-note h3,.session-note p{display:none}
+.session-note{padding:10px 18px}
+@media(max-width:950px){.background-details>summary span{display:block;margin-left:14px}.task-column{grid-row:auto}.monitoring{grid-row:1}.task-column{position:static}.answer-options{grid-template-columns:1fr 1fr}}
+@media(min-width:951px){.workspace{grid-template-columns:minmax(0,1fr) 360px}}
+
+/* Dual-metric prototype */
+#metric-tabs,.metric-select{display:none}.dual-heading{padding:8px 22px 0;font-size:13px;font-weight:600;color:#d5e2f3}.dual-heading span{font-weight:400;color:#8296af;font-size:11px;margin-left:12px}.service-panel th{line-height:1.6}.service-panel td{font-size:12px}.chart-panel .panel-heading{margin-bottom:0}
+
+/* Larger, higher-contrast reading layout */
+body{font-size:16px}
+h2,.panel-heading h2{font-size:20px}
+.subtitle,.connection,.button,.text-button,.session-bar strong,#trial-count{font-size:15px}
+.mini-label,.eyebrow,.step-label,.condition-badge,.tag,.count-badge{font-size:13px}
+.window-key,.context-bar strong,.panel-heading p,.dual-heading span{font-size:14px;color:#b4c3d6}
+.context-bar{flex-wrap:wrap}
+.window-key{flex-wrap:wrap}
+.dual-heading{font-size:18px;padding-top:14px}
+.legend button{font-size:14px;line-height:1.6;padding:3px 0;color:#cbd7e6}
+.legend{gap:8px 18px}
+.chart-panel .chart-host{min-height:0;overflow-x:auto}
+.chart-host svg{min-width:720px}
+.service-panel table,.service-panel td{font-size:16px}
+.service-panel td{padding:14px 18px;color:#e0e9f5}
+.service-panel th{font-size:15px;color:#bdcde0;padding:13px 18px}
+.task-panel h2{font-size:24px;line-height:1.4}
+.task-question,.task-rule,.advice-text,.result-box p,.result-box strong,.summary-list{font-size:16px;line-height:1.75}
+.answer-options{grid-template-columns:1fr}
+.answer-option{font-size:15px;min-height:48px;padding:12px;color:#d7e3f4}
+.answer-option input{width:17px;height:17px}
+.tiny-note,.initial-receipt,.next-info,.audio-state,.audio-controls .button,.advice-label{font-size:14px;color:#b4c5da}
+.audio-controls{flex-wrap:wrap}
+.background-details>summary{font-size:16px}
+.background-details>summary span,.event p,.event-time,.event strong,.kpi-label,.kpi-bottom{font-size:14px;color:#b4c3d6}
+footer{font-size:12px;color:#9bafc8}
+dialog{width:min(680px,calc(100% - 28px))}
+dialog p,form>label,.form-grid label,input,select,.rule-preview,.rule-preview ol,.info-list{font-size:16px}
+.rule-preview p,.setup-facts span,.audio-check span,.data-links a{font-size:14px}
+.tooltip{font-size:14px;max-width:340px}
+@media(min-width:1181px){.workspace{grid-template-columns:minmax(0,1fr) 420px}}
+@media(min-width:951px) and (max-width:1180px){.workspace{grid-template-columns:minmax(0,1fr) 370px}}
+@media(max-width:950px){.workspace{grid-template-columns:1fr}.task-panel h2{font-size:24px}.answer-options{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.answer-options{grid-template-columns:1fr}.header-actions .button,.subtitle,.window-key{font-size:14px}.legend button{font-size:14px}.dual-heading span{display:block;margin-left:0}.eyebrow{font-size:12px}.chart-host svg{min-width:720px}}
+.chart-host svg{min-width:0}
